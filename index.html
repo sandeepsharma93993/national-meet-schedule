@@ -1,138 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOS Young Adults 2.0 Convention</title>
-<style>
-  :root {
-    --bg: #fefefe;
-    --nav-grad: linear-gradient(90deg, #a8edea, #fed6e3);
-    --btn-active: #457b9d;
-    --btn-default: #f1faee;
-    --btn-hover: #e0f7fa;
-    --table-bg: #f1faee;
-    --table-header: #a8dadc;
-    --table-row: #f7fbff;
-    --table-hover: #e0f7fa;
-    --text: #1d3557;
-    --shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  * {box-sizing: border-box;}
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    scroll-behavior: smooth;
-  }
-  .nav {
-    background: var(--nav-grad);
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-    box-shadow: var(--shadow);
-    z-index: 100;
-  }
-  .nav h1 {margin: 0; font-size: 1.5rem;}
-  .hero {
-    text-align: center;
-    padding: 30px 20px;
-  }
-  .hero h2 {
-    margin: 8px 0;
-    font-size: clamp(24px, 4vw, 36px);
-  }
-  .hero p {
-    margin: 4px 0;
-    color: var(--text);
-    font-size: 1rem;
-  }
-  .hero .emphasis {
-    font-size: clamp(20px, 3vw, 28px);
-    margin: 16px 0;
-    color: var(--btn-active);
-  }
-  .tabs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  .tab-btn {
-    background-color: var(--btn-default);
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-    font-size: 0.9rem;
-  }
-  .tab-btn.active {
-    background-color: var(--btn-active);
-    color: white;
-    transform: scale(1.05);
-  }
-  .tab-btn:hover {
-    background-color: var(--btn-hover);
-  }
-  .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    overflow-x: auto;
-  }
-  .tab-content {
-    display: none;
-    animation: slideFade 0.6s ease forwards;
-  }
-  .tab-content.active {
-    display: block;
-  }
-  @keyframes slideFade {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    background-color: var(--table-bg);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-  th, td {
-    padding: 10px;
-    border-bottom: 1px solid #e9ecef;
-  }
-  th {
-    background-color: var(--table-header);
-    text-align: left;
-  }
-  tr:nth-child(even) {
-    background-color: var(--table-row);
-  }
-  tr:hover {
-    background-color: var(--table-hover);
-    transition: background-color 0.3s;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOS Young Adults 2.0 Convention</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fdfdfd;
+      color: #1d3557;
+    }
+    /* Top Section */
+    .top-section {
+      text-align: center;
+      padding: 50px 20px 40px;
+      background: linear-gradient(120deg, #ffe6e6, #e6f7ff);
+      color: #1d3557;
+    }
+    .top-section .mission {
+      text-transform: uppercase;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .top-section .welcome {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #457b9d;
+      margin-bottom: 16px;
+    }
+    .top-section .title {
+      font-size: clamp(24px, 5vw, 36px);
+      color: #e63946;
+      margin: 12px 0;
+    }
+    .top-section .tagline {
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .top-section .date,
+    .top-section .location {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Navigation Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #f1f1f1;
+      padding: 10px;
+      gap: 10px;
+    }
+    .tab-btn {
+      background: #f9f9f9;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 20px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .tab-btn.active {
+      background: #a8dadc;
+      color: #fff;
+    }
+    .tab-btn:hover {
+      background: #bde0fe;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .tab-content.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 12px;
+    }
+    th {
+      background-color: #f8edeb;
+    }
+    tr:nth-child(even) {
+      background-color: #fdf2f8;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Top Section -->
-<header class="top-section">
-  <p class="mission">Sawan Kirpal Ruhani Mission</p>
-  <p class="welcome">Welcomes You to</p>
-  <h1 class="title">✨ SOS Young Adults 2.0 Convention ✨</h1>
-  <p class="tagline">The Rise Of New ERA</p>
-  <p class="date">🗓️ <strong>Date:</strong> 16th & 17th Aug 2025</p>
-  <p class="location">📍 <strong>Location:</strong> Darshan Meditation Hall, Kirpal Ashram, Delhi</p>
-</header>
+  <!-- Top Section -->
+  <header class="top-section">
+    <p class="mission">SAWAN KIRPAL RUHANI MISSION</p>
+    <p class="welcome">welcomes you to</p>
+    <h1 class="title">✨ SOS Young Adults 2.0 Convention ✨</h1>
+    <p class="tagline">The Rise Of New ERA</p>
+    <p class="date">🗓️ <strong>Date:</strong> 16th &amp; 17th Aug 2025</p>
+    <p class="location">📍 <strong>Location:</strong> Darshan Meditation Hall, Kirpal Ashram, Delhi</p>
+  </header>
 
   <!-- Tabs -->
   <div class="tabs">
@@ -141,32 +123,26 @@
   </div>
 
   <!-- Tab Content -->
-  <div class="container">
-
-    <!-- Day 1 -->
-    <div id="day1" class="tab-content active">
-      <table>
-        <thead>
-          <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>9.00 AM - 10.00 AM</td><td>Welcome & Registration + Breakfast</td></tr>
+  <div id="day1" class="tab-content active">
+    <h2>National Meet Program Sheet - 16 August</h2>
+    <table>
+      <tr><td>1</td><td>9.00 AM - 10.00 AM</td><td>Welcome & Registration + Breakfast</td></tr>
           <tr><td>2</td><td>10.00 AM - 10.05 AM</td><td>Welcome by Emcee</td></tr>
           <tr><td>3</td><td>10.05 AM - 10.30 AM</td><td>Maharajji's Video Satsang</td></tr>
           <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Meditation Session</td></tr>
           <tr><td>5</td><td>11.00 AM - 11.05 AM</td><td>Welcome Address</td></tr>
           <tr><td>6</td><td>11.05 AM - 11.20 AM</td><td>Ice Breaking Activity</td></tr>
           <tr><td>7</td><td>11.20 AM - 11.50 AM</td><td>Motivational Talk by Shalika Budhiraja - Shift how you approach Sewa & Manage Time</td></tr>
-          <tr><td>8</td><td>11.50 AM - 12.00 PM</td><td>RC Talk - Zone 2 & Zone 3</td></tr>
+          <tr><td>8</td><td>11.50 AM - 12.00 PM</td><td>Zone Wise Talk - Zone 2 & Zone 3</td></tr>
           <tr><td>9</td><td>12.00 PM - 12.10 PM</td><td>Veggie Fest Video</td></tr>
           <tr><td>10</td><td>12.10 PM - 12.40 PM</td><td>Team Building Activity - Passing the Parcel</td></tr>
-          <tr><td>11</td><td>12.40 PM - 12.45 PM</td><td>RC Talk - Zone 5</td></tr>
+          <tr><td>11</td><td>12.40 PM - 12.45 PM</td><td>Zone Wise Talk - Zone 5</td></tr>
           <tr><td>12</td><td>12.45 PM - 1.00 PM</td><td>Motivational Talk - How to represent mission - Surinder Singh</td></tr>
           <tr><td>13</td><td>1.00 PM - 2.00 PM</td><td>Lunch</td></tr>
           <tr><td>14</td><td>2.00 PM - 2.10 PM</td><td>BDC and Organ Donation Video</td></tr>
-          <tr><td>15</td><td>2.10 PM - 2.20 PM</td><td>RC Talk - Zone 6 & Zone 7</td></tr>
+          <tr><td>15</td><td>2.10 PM - 2.20 PM</td><td>Zone Wise Talk - Zone 6 & Zone 7</td></tr>
           <tr><td>16</td><td>2.20 PM - 2.30 PM</td><td>Rooh ki Pukar Promotion</td></tr>
-          <tr><td>17</td><td>2.30 PM - 2.40 PM</td><td>RC Talk - Zone 8 & Zone 11</td></tr>
+          <tr><td>17</td><td>2.30 PM - 2.40 PM</td><td>Zone Wise Talk - Zone 8 & Zone 11</td></tr>
           <tr><td>18</td><td>2.40 PM - 4.40 PM</td><td>Cultural Program from Zones</td></tr>
           <tr><td>19</td><td>4.40 PM - 5.30 PM</td><td>Veggie Fest</td></tr>
           <tr><td>20</td><td>5.30 PM - 6.00 PM</td><td>Story of Grace</td></tr>
@@ -178,45 +154,46 @@
           <tr><td>26</td><td>7.00 PM - 7.05 PM</td><td>Vote of Thanks to Management Members</td></tr>
           <tr><td>27</td><td>7.05 PM - 7.15 PM</td><td>Group Photograph</td></tr>
           <tr><td>28</td><td>7.15 PM Onwards</td><td>Dinner</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Day 2 -->
-    <div id="day2" class="tab-content">
-      <table>
-        <thead>
-          <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>7.00 AM - 8.00 AM</td><td>Meditation Session in Sawan Ashram</td></tr>
-          <tr><td>2</td><td>8.00 AM - 9.00 AM</td><td>Breakfast</td></tr>
-          <tr><td>3</td><td>9.00 AM</td><td>Departure from Sawan Ashram</td></tr>
-          <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Satsang & Meditation</td></tr>
-          <tr><td>5</td><td>11.00 AM - 11.30 PM</td><td>Address by National Council + NFCs</td></tr>
-          <tr><td>6</td><td>11.30 AM - 12.30 PM</td><td>Sant Darshan Singh Ji Dham Sewa Area Visit</td></tr>
-          <tr><td>7</td><td>12.30 PM - 1.00 PM</td><td>September Program Planning - Group Discussion</td></tr>
-          <tr><td>8</td><td>1.00 PM - 1.30 PM</td><td>Meeting with NFCs, FCs, SC, CC with Shivani, Rachneet & Shalini Di</td></tr>
-          <tr><td>9</td><td>1.30 PM onwards</td><td>Lunch</td></tr>
-        </tbody>
-      </table>
-    </div>
-
+    </table>
   </div>
 
-<script>
-  const tabs = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
+  <div id="day2" class="tab-content">
+    <h2>National Meet Program Sheet - 17 August</h2>
+    <table>
+      <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
+      <tr><td>1</td><td>7.00 AM - 8.00 AM</td><td>Meditation Session in Sawan Ashram</td></tr>
+      <tr><td>2</td><td>8.00 AM - 9.00 AM</td><td>Breakfast</td></tr>
+      <tr><td>3</td><td>9.00 AM</td><td>Departure from Sawan Ashram</td></tr>
+      <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Satsang & Meditation</td></tr>
+      <tr><td>5</td><td>11.00 AM - 11.30 PM</td><td>Address by National Council + NFCs</td></tr>
+      <tr><td>6</td><td>11.30 AM - 12.30 PM</td><td>Sant Darshan Singh Ji Dham Sewa Area Visit</td></tr>
+      <tr><td>7</td><td>12.30 PM - 1.00 PM</td><td>September Program Planning</td></tr>
+      <tr><td>8</td><td>1.00 PM - 1.30 PM</td><td>Meeting with NFCs, FCs, SC, CC</td></tr>
+      <tr><td>9</td><td>1.30 PM onwards</td><td>Lunch</td></tr>
+    </table>
+  </div>
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
+  <!-- JS for Tabs -->
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(btn => btn.classList.remove('active'));
+        tab.classList.add('active');
+
+        const target = tab.dataset.tab;
+        contents.forEach(c => {
+          if (c.id === target) {
+            c.classList.add('active');
+          } else {
+            c.classList.remove('active');
+          }
+        });
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
