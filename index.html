@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Meet Program Sheet</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fdfdfd;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+    header {
+        background: linear-gradient(to right, #a8edea, #fed6e3);
+        padding: 15px 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #444;
+    }
+    nav {
+        margin-top: 10px;
+    }
+    nav button {
+        background: #ffffff;
+        border: 2px solid #ffb6b9;
+        padding: 8px 16px;
+        border-radius: 20px;
+        margin: 0 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+    nav button.active {
+        background: #ffb6b9;
+        color: white;
+    }
+    nav button:hover {
+        background: #ffb6b9;
+        color: white;
+    }
+    section {
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    th {
+        background: #f9f9f9;
+        font-weight: bold;
+        text-align: left;
+        color: #555;
+    }
+    tr:hover {
+        background: #fff6f7;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>National Meet Program Sheet</h1>
+    <nav>
+        <button id="btn16" class="active" onclick="showDay('day16')">16 August</button>
+        <button id="btn17" onclick="showDay('day17')">17 August</button>
+    </nav>
+</header>
+
+<section id="day16">
+    <table>
+        <thead>
+            <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>9.00 AM - 10.00 AM</td><td>Welcome & Registration + Breakfast</td></tr>
+            <tr><td>2</td><td>10.00 AM - 10.05 AM</td><td>Welcome by Emcee</td></tr>
+            <tr><td>3</td><td>10.05 AM - 10.30 AM</td><td>Maharajji's Video Satsang</td></tr>
+            <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Meditation Session</td></tr>
+            <tr><td>5</td><td>11.00 AM - 11.05 AM</td><td>Welcome Address</td></tr>
+            <tr><td>6</td><td>11.05 AM - 11.20 AM</td><td>Ice Breaking Activity</td></tr>
+            <tr><td>7</td><td>11.20 PM - 11.50 PM</td><td>Motivational Talk by Shalika Budhiraja</td></tr>
+            <tr><td>8</td><td>11.50 AM - 12.00 PM</td><td>RC Talk - Zone 2 & Zone 3</td></tr>
+            <tr><td>9</td><td>12.00 PM - 12.10 PM</td><td>Veggie Fest Video</td></tr>
+            <tr><td>10</td><td>12.10 PM - 12.40 PM</td><td>Team Building Activity - Passing the Parcel</td></tr>
+            <tr><td>11</td><td>12.40 PM - 12.45 PM</td><td>RC Talk - Zone 5</td></tr>
+            <tr><td>12</td><td>12.45 PM - 1.00 PM</td><td>Motivational Talk - Surinder Singh</td></tr>
+            <tr><td>13</td><td>1.00 PM - 2.00 PM</td><td>Lunch</td></tr>
+            <tr><td>14</td><td>2.00 PM - 2.10 PM</td><td>BDC and Organ Donation Video</td></tr>
+            <tr><td>15</td><td>2.10 PM - 2.20 PM</td><td>RC Talk - Zone 6 & Zone 7</td></tr>
+            <tr><td>16</td><td>2.20 PM - 2.30 PM</td><td>Rooh ki Pukar Promotion</td></tr>
+            <tr><td>17</td><td>2.30 PM - 2.40 PM</td><td>RC Talk - Zone 8 & Zone 11</td></tr>
+            <tr><td>18</td><td>2.40 PM - 4.40 PM</td><td>Cultural Program from Zones</td></tr>
+            <tr><td>19</td><td>4.40 PM - 5.30 PM</td><td>Veggie Fest</td></tr>
+            <tr><td>20</td><td>5.30 PM - 6.00 PM</td><td>Story of Grace</td></tr>
+            <tr><td>21</td><td>5.40 PM - 5.50 PM</td><td>Innergy Promotion</td></tr>
+            <tr><td>22</td><td>6.00 PM - 6.05 PM</td><td>Welcome of Management Members</td></tr>
+            <tr><td>23</td><td>6.05 PM - 6.20 PM</td><td>Presentation Video of Zone Visit</td></tr>
+            <tr><td>24</td><td>6.20 PM - 6.40 PM</td><td>Encouraging words by GS Grover Uncle Ji</td></tr>
+            <tr><td>25</td><td>6.40 PM - 7.00 PM</td><td>Encouraging words by Ashwani Sachdeva Uncle Ji</td></tr>
+            <tr><td>26</td><td>7.00 PM - 7.05 PM</td><td>Vote of Thanks</td></tr>
+            <tr><td>27</td><td>7.05 PM - 7.15 PM</td><td>Group Photograph</td></tr>
+            <tr><td>28</td><td>7.15 PM Onwards</td><td>Dinner</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="day17" style="display:none;">
+    <table>
+        <thead>
+            <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>7.00 AM - 8.00 AM</td><td>Meditation Session in Sawan Ashram</td></tr>
+            <tr><td>2</td><td>8.00 AM - 9.00 AM</td><td>Breakfast</td></tr>
+            <tr><td>3</td><td>9.00 AM</td><td>Departure from Sawan Ashram</td></tr>
+            <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Satsang & Meditation</td></tr>
+            <tr><td>5</td><td>11.00 AM - 11.30 PM</td><td>Address by National Council + NFCs</td></tr>
+            <tr><td>6</td><td>11.30 AM - 12.30 PM</td><td>Sant Darshan Singh Ji Dham Sewa Area Visit</td></tr>
+            <tr><td>7</td><td>12.30 PM - 1.00 PM</td><td>September Program Planning - Group Discussion</td></tr>
+            <tr><td>8</td><td>1.00 PM - 1.30 PM</td><td>Meeting with NFCs, FCs, SC, and CC</td></tr>
+            <tr><td>9</td><td>1.30 PM onwards</td><td>Lunch</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<script>
+function showDay(day) {
+    document.getElementById('day16').style.display = (day === 'day16') ? 'block' : 'none';
+    document.getElementById('day17').style.display = (day === 'day17') ? 'block' : 'none';
+    document.getElementById('btn16').classList.toggle('active', day === 'day16');
+    document.getElementById('btn17').classList.toggle('active', day === 'day17');
+}
+</script>
+
+</body>
+</html>
