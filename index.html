@@ -1,160 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>National Meet Program Sheet</title>
+<meta name="color-scheme" content="light" />
 <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #fdfdfd;
-        margin: 0;
-        padding: 0;
-        color: #333;
-    }
-    header {
-        background: linear-gradient(to right, #a8edea, #fed6e3);
-        padding: 15px 20px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    header h1 {
-        margin: 0;
-        font-size: 24px;
-        color: #444;
-    }
-    nav {
-        margin-top: 10px;
-    }
-    nav button {
-        background: #ffffff;
-        border: 2px solid #ffb6b9;
-        padding: 8px 16px;
-        border-radius: 20px;
-        margin: 0 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s;
-    }
-    nav button.active {
-        background: #ffb6b9;
-        color: white;
-    }
-    nav button:hover {
-        background: #ffb6b9;
-        color: white;
-    }
-    section {
-        padding: 20px;
-        max-width: 900px;
-        margin: auto;
-        animation: fadeIn 0.6s ease-in-out;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    th, td {
-        padding: 12px 15px;
-        border-bottom: 1px solid #f0f0f0;
-    }
-    th {
-        background: #f9f9f9;
-        font-weight: bold;
-        text-align: left;
-        color: #555;
-    }
-    tr:hover {
-        background: #fff6f7;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+  :root{
+    --bg:#fffdfd;
+    --card:#ffffff;
+    --text:#2b2e34;
+    --muted:#6b7280;
+    --brand-1:#a8edea;   /* aqua pastel */
+    --brand-2:#fed6e3;   /* pink pastel */
+    --accent:#90caf9;    /* light blue */
+    --accent-2:#ffd3e2;  /* soft pink */
+    --row:#f7fbff;
+    --hover:#f1f8ff;
+    --shadow:0 8px 24px rgba(18, 38, 63, .06);
+    --radius:16px;
+    --speed:360ms;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: var(--bg);
+    color: var(--text);
+    overflow-x:hidden;
+  }
+
+  /* NAVBAR */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background: linear-gradient(90deg,var(--brand-1),var(--brand-2));
+    backdrop-filter:saturate(120%) blur(6px);
+    box-shadow: var(--shadow);
+  }
+  .nav-inner{
+    max-width:1100px; margin:auto; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-weight:700; letter-spacing:.2px; color:#34495e}
+  .nav-links{display:flex; gap:16px}
+  .nav-a{
+    text-decoration:none; color:#334155; font-weight:600; font-size:14px;
+    padding:8px 12px; border-radius:999px; transition:background var(--speed);
+  }
+  .nav-a:hover{ background: rgba(255,255,255,.65) }
+
+  /* HEADER / HERO */
+  .hero{
+    max-width:1100px; margin:28px auto 0; padding:0 20px 10px;
+  }
+  .title{
+    font-size: clamp(22px, 3.2vw, 34px);
+    text-align:center; margin:8px 0 6px;
+  }
+  .subtitle{
+    text-align:center; color:var(--muted); font-size:14px;
+  }
+
+  /* TABS */
+  .tabs-wrap{
+    position:relative; max-width:1100px; margin:20px auto 0; padding:0 20px;
+  }
+  .tabs{
+    display:flex; gap:10px; justify-content:center; position:relative;
+  }
+  .tab-btn{
+    appearance:none; border:0; cursor:pointer;
+    padding:10px 18px; font-weight:700; font-size:14px;
+    border-radius:999px;
+    background:#eef6ff; color:#1f2a44;
+    transition:transform 160ms ease, background var(--speed), color var(--speed);
+  }
+  .tab-btn:hover{ transform:translateY(-1px) }
+  .tab-btn.active{ background:var(--accent); color:white }
+
+  /* indicator */
+  .indicator{
+    position:absolute; bottom:-6px; height:6px; border-radius:999px;
+    background: linear-gradient(90deg,var(--accent),var(--accent-2));
+    width:120px; left:50%; transform:translateX(-50%);
+    transition: left var(--speed) cubic-bezier(.2,.8,.2,1), width var(--speed);
+    box-shadow: 0 6px 18px rgba(144,202,249,.45);
+  }
+
+  /* SLIDER */
+  .slider-viewport{
+    overflow:hidden; max-width:1100px; margin:18px auto; padding:0 20px;
+  }
+  .slider-track{
+    display:flex; width:200%; will-change:transform;
+    transition: transform var(--speed) cubic-bezier(.2,.8,.2,1);
+  }
+  .panel{
+    width:50%; padding:8px;
+  }
+  .card{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:16px; overflow:hidden;
+    opacity:0; transform: translateY(18px) scale(.99);
+  }
+  .card.show{ opacity:1; transform:none; transition: all 520ms cubic-bezier(.2,.8,.2,1) }
+  .card h2{
+    margin:6px 8px 12px; font-size:18px; color:#374151;
+  }
+
+  /* TABLE */
+  table{
+    width:100%; border-collapse:collapse; font-size:14px;
+  }
+  thead th{
+    text-align:left; padding:12px 14px;
+    background:#eaf4ff; color:#1f2a44;
+    position:sticky; top:0;
+  }
+  tbody td{ padding:12px 14px; border-top:1px solid #f2f6fb }
+  tbody tr:nth-child(even){ background:var(--row) }
+  tbody tr:hover{ background:var(--hover) }
+
+  /* REVEAL ON SCROLL */
+  .reveal{ opacity:0; transform:translateY(16px); }
+  .reveal.show{ opacity:1; transform:none; transition: all 520ms cubic-bezier(.2,.8,.2,1) }
+
+  /* SMOOTH SCROLL */
+  html{ scroll-behavior:smooth }
+
+  /* ACCESSIBILITY: reduce motion */
+  @media (prefers-reduced-motion: reduce){
+    .slider-track, .card, .reveal{ transition:none !important }
+    .tab-btn:hover{ transform:none }
+    html{ scroll-behavior:auto }
+  }
+
+  /* MOBILE */
+  @media (max-width:720px){
+    .panel{ width:100% }
+    .slider-track{ width:200% }
+    .nav-links{ display:none }
+  }
 </style>
 </head>
 <body>
 
-<header>
-    <h1>National Meet Program Sheet</h1>
-    <nav>
-        <button id="btn16" class="active" onclick="showDay('day16')">16 August</button>
-        <button id="btn17" onclick="showDay('day17')">17 August</button>
-    </nav>
-</header>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main">
+    <div class="nav-inner">
+      <div class="brand">National Meet 2025</div>
+      <div class="nav-links">
+        <a class="nav-a" href="#top">Home</a>
+        <a class="nav-a" href="#tabs">Schedule</a>
+        <a class="nav-a" href="#aug16">16 Aug</a>
+        <a class="nav-a" href="#aug17">17 Aug</a>
+      </div>
+    </div>
+  </nav>
 
-<section id="day16">
-    <table>
-        <thead>
-            <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>9.00 AM - 10.00 AM</td><td>Welcome & Registration + Breakfast</td></tr>
-            <tr><td>2</td><td>10.00 AM - 10.05 AM</td><td>Welcome by Emcee</td></tr>
-            <tr><td>3</td><td>10.05 AM - 10.30 AM</td><td>Maharajji's Video Satsang</td></tr>
-            <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Meditation Session</td></tr>
-            <tr><td>5</td><td>11.00 AM - 11.05 AM</td><td>Welcome Address</td></tr>
-            <tr><td>6</td><td>11.05 AM - 11.20 AM</td><td>Ice Breaking Activity</td></tr>
-            <tr><td>7</td><td>11.20 PM - 11.50 PM</td><td>Motivational Talk by Shalika Budhiraja</td></tr>
-            <tr><td>8</td><td>11.50 AM - 12.00 PM</td><td>RC Talk - Zone 2 & Zone 3</td></tr>
-            <tr><td>9</td><td>12.00 PM - 12.10 PM</td><td>Veggie Fest Video</td></tr>
-            <tr><td>10</td><td>12.10 PM - 12.40 PM</td><td>Team Building Activity - Passing the Parcel</td></tr>
-            <tr><td>11</td><td>12.40 PM - 12.45 PM</td><td>RC Talk - Zone 5</td></tr>
-            <tr><td>12</td><td>12.45 PM - 1.00 PM</td><td>Motivational Talk - Surinder Singh</td></tr>
-            <tr><td>13</td><td>1.00 PM - 2.00 PM</td><td>Lunch</td></tr>
-            <tr><td>14</td><td>2.00 PM - 2.10 PM</td><td>BDC and Organ Donation Video</td></tr>
-            <tr><td>15</td><td>2.10 PM - 2.20 PM</td><td>RC Talk - Zone 6 & Zone 7</td></tr>
-            <tr><td>16</td><td>2.20 PM - 2.30 PM</td><td>Rooh ki Pukar Promotion</td></tr>
-            <tr><td>17</td><td>2.30 PM - 2.40 PM</td><td>RC Talk - Zone 8 & Zone 11</td></tr>
-            <tr><td>18</td><td>2.40 PM - 4.40 PM</td><td>Cultural Program from Zones</td></tr>
-            <tr><td>19</td><td>4.40 PM - 5.30 PM</td><td>Veggie Fest</td></tr>
-            <tr><td>20</td><td>5.30 PM - 6.00 PM</td><td>Story of Grace</td></tr>
-            <tr><td>21</td><td>5.40 PM - 5.50 PM</td><td>Innergy Promotion</td></tr>
-            <tr><td>22</td><td>6.00 PM - 6.05 PM</td><td>Welcome of Management Members</td></tr>
-            <tr><td>23</td><td>6.05 PM - 6.20 PM</td><td>Presentation Video of Zone Visit</td></tr>
-            <tr><td>24</td><td>6.20 PM - 6.40 PM</td><td>Encouraging words by GS Grover Uncle Ji</td></tr>
-            <tr><td>25</td><td>6.40 PM - 7.00 PM</td><td>Encouraging words by Ashwani Sachdeva Uncle Ji</td></tr>
-            <tr><td>26</td><td>7.00 PM - 7.05 PM</td><td>Vote of Thanks</td></tr>
-            <tr><td>27</td><td>7.05 PM - 7.15 PM</td><td>Group Photograph</td></tr>
-            <tr><td>28</td><td>7.15 PM Onwards</td><td>Dinner</td></tr>
-        </tbody>
-    </table>
-</section>
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <h1 class="title">Program Sheet — 16 & 17 August</h1>
+    <p class="subtitle">Pastel UI • Sliding Tabs • Smooth Animations</p>
+  </header>
 
-<section id="day17" style="display:none;">
-    <table>
-        <thead>
-            <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>7.00 AM - 8.00 AM</td><td>Meditation Session in Sawan Ashram</td></tr>
-            <tr><td>2</td><td>8.00 AM - 9.00 AM</td><td>Breakfast</td></tr>
-            <tr><td>3</td><td>9.00 AM</td><td>Departure from Sawan Ashram</td></tr>
-            <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Satsang & Meditation</td></tr>
-            <tr><td>5</td><td>11.00 AM - 11.30 PM</td><td>Address by National Council + NFCs</td></tr>
-            <tr><td>6</td><td>11.30 AM - 12.30 PM</td><td>Sant Darshan Singh Ji Dham Sewa Area Visit</td></tr>
-            <tr><td>7</td><td>12.30 PM - 1.00 PM</td><td>September Program Planning - Group Discussion</td></tr>
-            <tr><td>8</td><td>1.00 PM - 1.30 PM</td><td>Meeting with NFCs, FCs, SC, and CC</td></tr>
-            <tr><td>9</td><td>1.30 PM onwards</td><td>Lunch</td></tr>
-        </tbody>
-    </table>
-</section>
+  <!-- TABS -->
+  <section id="tabs" class="tabs-wrap">
+    <div class="tabs" role="tablist" aria-label="Program Days">
+      <button id="btn-16" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-16">16 August</button>
+      <button id="btn-17" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-17">17 August</button>
+      <div id="indicator" class="indicator" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- SLIDER -->
+  <div class="slider-viewport">
+    <div id="track" class="slider-track" style="transform: translateX(0%)">
+      <!-- DAY 16 -->
+      <section id="panel-16" class="panel" aria-labelledby="btn-16">
+        <div id="aug16" class="card reveal">
+          <h2>📅 16 August</h2>
+          <div class="table-wrap">
+            <table aria-label="16 August Program">
+              <thead>
+                <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>9.00 AM - 10.00 AM</td><td>Welcome & Registration + Breakfast</td></tr>
+                <tr><td>2</td><td>10.00 AM - 10.05 AM</td><td>Welcome by Emcee</td></tr>
+                <tr><td>3</td><td>10.05 AM - 10.30 AM</td><td>Maharajji's Video Satsang</td></tr>
+                <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Meditation Session</td></tr>
+                <tr><td>5</td><td>11.00 AM - 11.05 AM</td><td>Welcome Address</td></tr>
+                <tr><td>6</td><td>11.05 AM - 11.20 AM</td><td>Ice Breaking Activity</td></tr>
+                <tr><td>7</td><td>11.20 AM - 11.50 AM</td><td>Motivational Talk by Shalika Budhiraja — Shift how you approach Sewa & Manage Time</td></tr>
+                <tr><td>8</td><td>11.50 AM - 12.00 PM</td><td>RC Talk — Zone 2 & Zone 3</td></tr>
+                <tr><td>9</td><td>12.00 PM - 12.10 PM</td><td>Veggie Fest Video</td></tr>
+                <tr><td>10</td><td>12.10 PM - 12.40 PM</td><td>Team Building Activity — Passing the Parcel</td></tr>
+                <tr><td>11</td><td>12.40 PM - 12.45 PM</td><td>RC Talk — Zone 5</td></tr>
+                <tr><td>12</td><td>12.45 PM - 1.00 PM</td><td>Motivational Talk — How to represent mission — Surinder Singh</td></tr>
+                <tr><td>13</td><td>1.00 PM - 2.00 PM</td><td>Lunch</td></tr>
+                <tr><td>14</td><td>2.00 PM - 2.10 PM</td><td>BDC and Organ Donation Video</td></tr>
+                <tr><td>15</td><td>2.10 PM - 2.20 PM</td><td>RC Talk — Zone 6 & Zone 7</td></tr>
+                <tr><td>16</td><td>2.20 PM - 2.30 PM</td><td>Rooh ki Pukar Promotion</td></tr>
+                <tr><td>17</td><td>2.30 PM - 2.40 PM</td><td>RC Talk — Zone 8 & Zone 11</td></tr>
+                <tr><td>18</td><td>2.40 PM - 4.40 PM</td><td>Cultural Program from Zones</td></tr>
+                <tr><td>19</td><td>4.40 PM - 5.30 PM</td><td>Veggie Fest</td></tr>
+                <tr><td>20</td><td>5.30 PM - 6.00 PM</td><td>Story of Grace</td></tr>
+                <tr><td>21</td><td>5.40 PM - 5.50 PM</td><td>Innergy Promotion</td></tr>
+                <tr><td>22</td><td>6.00 PM - 6.05 PM</td><td>Welcome of Management Members — G.S. Grover Uncle Ji, Shree Ashwani Sachdeva Uncle Ji and other mgt members</td></tr>
+                <tr><td>23</td><td>6.05 PM - 6.20 PM</td><td>Presentation Video of Zone Visit</td></tr>
+                <tr><td>24</td><td>6.20 PM - 6.40 PM</td><td>Encouraging words by GS Grover Uncle Ji</td></tr>
+                <tr><td>25</td><td>6.40 PM - 7.00 PM</td><td>Encouraging words by Ashwani Sachdeva Uncle Ji</td></tr>
+                <tr><td>26</td><td>7.00 PM - 7.05 PM</td><td>Vote of Thanks to Management Members — G.S. Grover Uncle Ji, Shree Ashwani Sachdeva Uncle Ji and other mgt members</td></tr>
+                <tr><td>27</td><td>7.05 PM - 7.15 PM</td><td>Group Photograph</td></tr>
+                <tr><td>28</td><td>7.15 PM Onwards</td><td>Dinner</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- DAY 17 -->
+      <section id="panel-17" class="panel" aria-labelledby="btn-17">
+        <div id="aug17" class="card reveal">
+          <h2>📅 17 August</h2>
+          <table aria-label="17 August Program">
+            <thead>
+              <tr><th>S.No.</th><th>Time</th><th>Event</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>7.00 AM - 8.00 AM</td><td>Meditation Session in Sawan Ashram</td></tr>
+              <tr><td>2</td><td>8.00 AM - 9.00 AM</td><td>Breakfast</td></tr>
+              <tr><td>3</td><td>9.00 AM</td><td>Departure from Sawan Ashram</td></tr>
+              <tr><td>4</td><td>10.30 AM - 11.00 AM</td><td>Satsang & Meditation</td></tr>
+              <tr><td>5</td><td>11.00 AM - 11.30 AM</td><td>Address by National Council + Address by NFCs</td></tr>
+              <tr><td>6</td><td>11.30 AM - 12.30 PM</td><td>Sant Darshan Singh Ji Dham Sewa Area Visit</td></tr>
+              <tr><td>7</td><td>12.30 PM - 1.00 PM</td><td>September Program Planning of Sewa Areas — Group Discussion with NFCs & Zone FCs (Introduction of NFC and expectations)</td></tr>
+              <tr><td>8</td><td>1.00 PM - 1.30 PM</td><td>Meeting with NFCs, FCs, SC, and CC with Shivani, Rachneet & Shalini Di</td></tr>
+              <tr><td>9</td><td>1.30 PM onwards</td><td>Lunch</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
 
 <script>
-function showDay(day) {
-    document.getElementById('day16').style.display = (day === 'day16') ? 'block' : 'none';
-    document.getElementById('day17').style.display = (day === 'day17') ? 'block' : 'none';
-    document.getElementById('btn16').classList.toggle('active', day === 'day16');
-    document.getElementById('btn17').classList.toggle('active', day === 'day17');
-}
-</script>
+  // Utilities
+  const $ = (sel, ctx=document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
+  // Elements
+  const btn16 = $('#btn-16');
+  const btn17 = $('#btn-17');
+  const track = $('#track');
+  const indicator = $('#indicator');
+  const panels = [$('#panel-16'), $('#panel-17')];
+
+  // Indicator positioning based on active button
+  function positionIndicator(btn){
+    const rect = btn.getBoundingClientRect();
+    const parentRect = btn.parentElement.getBoundingClientRect();
+    const width = rect.width;
+    const left = rect.left - parentRect.left;
+    indicator.style.width = width + 'px';
+    indicator.style.left = (left + width/2) + 'px';
+  }
+
+  // Slide logic
+  function activate(dayIndex){
+    // toggle ARIA states
+    [btn16, btn17].forEach((b,i)=>{
+      const active = i===dayIndex;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    // slide track
+    track.style.transform = `translateX(-${dayIndex*50}%)`;
+
+    // reveal animation on first view
+    const card = panels[dayIndex].querySelector('.card');
+    card.classList.add('show');
+
+    // move indicator
+    positionIndicator(dayIndex===0 ? btn16 : btn17);
+
+    // update hash for deep-linking
+    const id = dayIndex===0 ? 'aug16' : 'aug17';
+    history.replaceState(null, '', `#${id}`);
+  }
+
+  // Scroll reveal (IntersectionObserver)
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  $$('.reveal').forEach(el=> io.observe(el));
+
+  // Event listeners
+  btn16.addEventListener('click', ()=> activate(0));
+  btn17.addEventListener('click', ()=> activate(1));
+  window.addEventListener('resize', ()=> {
+    const active = btn17.classList.contains('active') ? btn17 : btn16;
+    positionIndicator(active);
+  });
+
+  // Init on load
+  window.addEventListener('DOMContentLoaded', ()=>{
+    // default from hash
+    const hash = location.hash.replace('#','');
+    const dayIndex = (hash === 'aug17') ? 1 : 0;
+    activate(dayIndex);
+  });
+</script>
 </body>
 </html>
